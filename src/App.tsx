@@ -16,10 +16,10 @@ function App() {
             <Box
                 // positioning for the box around the navbar - change later
                 position="fixed"
-                left="20px"
-                top="20px"
-                height="300px"
-                width="200px"
+                left="5vw"
+                top="20vh"
+                height="60vh"
+                width="20vw"
             >
                 <NavBar onSelectPage={(page) => setSelectedPage(page)}/>
             </Box>
