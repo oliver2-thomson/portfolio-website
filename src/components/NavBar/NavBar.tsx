@@ -1,4 +1,4 @@
-import {Button, Stack} from "@chakra-ui/react";
+import {Button, Flex, Stack} from "@chakra-ui/react";
 
 interface Props {
     onSelectPage: (id: number) => void;
@@ -15,15 +15,20 @@ const NavBar = ({onSelectPage}: Props) => {
 
     return (
         <>
-            <Stack spacing={4} marginY={3}>
-                {pageMap.map(page => (
-                    <Button
-                        key={page.key}
-                        value={page.value}
-                        onClick={() => onSelectPage(page.value)}
-                    >{page.text}</Button>
-                ))}
-            </Stack>
+            <Flex direction="column" height="100%">
+                <Stack
+                    flex="1"
+                    justifyContent="space-around"
+                >
+                    {pageMap.map(page => (
+                        <Button
+                            key={page.key}
+                            value={page.value}
+                            onClick={() => onSelectPage(page.value)}
+                        >{page.text}</Button>
+                    ))}
+                </Stack>
+            </Flex>
         </>
     );
 };

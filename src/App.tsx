@@ -1,4 +1,4 @@
-import {Grid, GridItem} from "@chakra-ui/react";
+import {Box} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import AboutMe from "./components/AboutMe";
 import Projects from "./components/Projects";
@@ -12,18 +12,26 @@ function App() {
 
     return (
         <>
-            <Grid templateAreas={`"nav main"`}>
-                <GridItem area="nav" bg="silver">
-                    <NavBar onSelectPage={(page) => setSelectedPage(page)}/>
-                </GridItem>
-                <GridItem area="main" bg="gold">
-                    {selectedPage === 0 && <AboutMe/>}
-                    {selectedPage === 1 && <Projects/>}
-                    {selectedPage === 2 && <Skills/>}
-                    {selectedPage === 3 && <Experience/>}
-                    {selectedPage === 4 && <ContactMe/>}
-                </GridItem>
-            </Grid>
+
+            <Box
+                // positioning for the box around the navbar - change later
+                position="fixed"
+                left="20px"
+                top="20px"
+                height="300px"
+                width="200px"
+            >
+                <NavBar onSelectPage={(page) => setSelectedPage(page)}/>
+            </Box>
+            <Box backgroundColor="gold">
+                {selectedPage === 0 && <AboutMe/>}
+                {selectedPage === 1 && <Projects/>}
+                {selectedPage === 2 && <Skills/>}
+                {selectedPage === 3 && <Experience/>}
+                {selectedPage === 4 && <ContactMe/>}
+            </Box>
+
+
         </>
     );
 }
