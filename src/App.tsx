@@ -5,21 +5,23 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import ContactMe from "./components/ContactMe";
+import {useState} from "react";
 
 function App() {
+    const [selectedPage, setSelectedPage] = useState(0);
 
     return (
         <>
-            <Grid templateAreas={`"nav" "main"`}>
+            <Grid templateAreas={`"nav main"`}>
                 <GridItem area="nav" bg="silver">
-                    <NavBar/>
+                    <NavBar onSelectPage={(page) => setSelectedPage(page)}/>
                 </GridItem>
                 <GridItem area="main" bg="gold">
-                    <AboutMe/>
-                    <Projects/>
-                    <Skills/>
-                    <Experience/>
-                    <ContactMe/>
+                    {selectedPage === 0 && <AboutMe/>}
+                    {selectedPage === 1 && <Projects/>}
+                    {selectedPage === 2 && <Skills/>}
+                    {selectedPage === 3 && <Experience/>}
+                    {selectedPage === 4 && <ContactMe/>}
                 </GridItem>
             </Grid>
         </>

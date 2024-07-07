@@ -1,15 +1,29 @@
-import {Button, HStack} from "@chakra-ui/react";
+import {Button, Stack} from "@chakra-ui/react";
 
-const NavBar = () => {
+interface Props {
+    onSelectPage: (id: number) => void;
+}
+
+const NavBar = ({onSelectPage}: Props) => {
+    const pageMap = [
+        {key: 0, value: 0, text: 'About me'},
+        {key: 1, value: 1, text: 'Projects'},
+        {key: 2, value: 2, text: 'Skills'},
+        {key: 3, value: 3, text: 'Experience'},
+        {key: 4, value: 4, text: 'Contact me'},
+    ];
+
     return (
         <>
-            <HStack justifyContent="space-around" marginY={3}>
-                <Button>About Me</Button>
-                <Button>Projects</Button>
-                <Button>Skills</Button>
-                <Button>Experience</Button>
-                <Button>Contact Me</Button>
-            </HStack>
+            <Stack spacing={4} marginY={3}>
+                {pageMap.map(page => (
+                    <Button
+                        key={page.key}
+                        value={page.value}
+                        onClick={() => onSelectPage(page.value)}
+                    >{page.text}</Button>
+                ))}
+            </Stack>
         </>
     );
 };
