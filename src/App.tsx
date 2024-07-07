@@ -12,31 +12,46 @@ function App() {
 
     return (
         <>
-            <Flex height="100vh">
-                <Box
-                    // positioning for the box around the navbar - change later
-                    position="fixed"
-                    left="5vw"
-                    top="20vh"
-                    height="60vh"
-                    width="20vw"
-                >
-                    <NavBar onSelectPage={(page) => setSelectedPage(page)}/>
-                </Box>
-                <Box
-                    //This doesnt seem like the best way to do this
+            <Box // encapsulates the whole viewport
+                position="relative"
+                height="100vh"
+                width="100vw"
+            >
+                <Box // for the background
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    width="100%"
+                    height="100%"
+                    zIndex="-1" // put it behind
                     backgroundColor="gold"
-                    marginLeft="30vw"
-                    flex="1"
-                    overflow="auto"
                 >
-                    {selectedPage === 0 && <AboutMe/>}
-                    {selectedPage === 1 && <Projects/>}
-                    {selectedPage === 2 && <Skills/>}
-                    {selectedPage === 3 && <Experience/>}
-                    {selectedPage === 4 && <ContactMe/>}
                 </Box>
-            </Flex>
+                <Flex height="100vh">
+                    <Box
+                        // positioning for the box around the navbar - change later
+                        position="fixed"
+                        left="5vw"
+                        top="20vh"
+                        height="60vh"
+                        width="20vw"
+                    >
+                        <NavBar onSelectPage={(page) => setSelectedPage(page)}/>
+                    </Box>
+                    <Box
+                        //This doesn't seem like the best way to do this
+                        marginLeft="30vw"
+                        flex="1"
+                        overflow="auto"
+                    >
+                        {selectedPage === 0 && <AboutMe/>}
+                        {selectedPage === 1 && <Projects/>}
+                        {selectedPage === 2 && <Skills/>}
+                        {selectedPage === 3 && <Experience/>}
+                        {selectedPage === 4 && <ContactMe/>}
+                    </Box>
+                </Flex>
+            </Box>
         </>
     );
 }
