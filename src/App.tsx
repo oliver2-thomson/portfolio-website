@@ -6,6 +6,7 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import ContactMe from "./components/ContactMe";
 import {useState} from "react";
+import Background from "./components/Background";
 
 function App() {
     const [selectedPage, setSelectedPage] = useState(0);
@@ -17,16 +18,7 @@ function App() {
                 height="100vh"
                 width="100vw"
             >
-                <Box // for the background
-                    position="absolute"
-                    top="0"
-                    left="0"
-                    width="100%"
-                    height="100%"
-                    zIndex="-1" // put it behind
-                    backgroundColor="gold"
-                >
-                </Box>
+                <Background/>
                 <Flex height="100vh">
                     <Box
                         // positioning for the box around the navbar - change later
