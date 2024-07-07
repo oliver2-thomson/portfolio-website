@@ -1,4 +1,5 @@
 import {Heading, Image, Stack} from "@chakra-ui/react";
+// @ts-expect-error issues importing SVG as module
 import headshot from '../../assets/about-me-anonymous.svg';
 
 const AboutMe = () => {
