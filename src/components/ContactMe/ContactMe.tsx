@@ -1,9 +1,12 @@
-import {Heading} from "@chakra-ui/react";
+import {Heading, Stack, Text} from "@chakra-ui/react";
 
 const ContactMe = () => {
     return (
         <>
-            <Heading>Contact me</Heading>
+            <Stack align="center">
+                <Heading>Contact me</Heading>
+                <Text>This tab is still a work in progress</Text>
+            </Stack>
         </>
     );
 };

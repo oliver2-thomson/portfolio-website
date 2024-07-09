@@ -1,11 +1,12 @@
-import {Heading} from "@chakra-ui/react";
+import {Heading, Stack, Text} from "@chakra-ui/react";
 
 const Skills = () => {
     return (
         <>
-            <Heading>
-                Skills
-            </Heading>
+            <Stack align="center">
+                <Heading>Skills</Heading>
+                <Text>This tab is still a work in progress</Text>
+            </Stack>
         </>
     );
 };
