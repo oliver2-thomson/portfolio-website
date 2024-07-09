@@ -1,41 +1,55 @@
 import {useEffect, useState} from "react";
 import username from "../../data/username.ts";
 import apiClient from "../../services/api-client.ts";
-import {Heading} from "@chakra-ui/react";
+import {Heading, Stack} from "@chakra-ui/react";
+import {CanceledError} from "axios";
 
-// type Repo {
-//
-// }
+interface Project {
+    name: string;
+}
+
+interface FetchResponse<Project> {
+    count: number;
+    data: Project[];
+}
 
 const ProjectList = () => {
-    const [repos, setRepos] = useState([]);
+    const [repos, setRepos] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        //let allRepos = [];
-        let response;
-        let page = 1;
+        const controller = new AbortController();
 
-        do {
-            response = apiClient.get(`https://api.github.com/users/${username}/repos`, {
+        apiClient
+            //get the first 100 repos from the user - I am assuming there will never be >100 repos but for the sake of generality I should come back and make this iterable
+            .get<FetchResponse<Project>>(`https://api.github.com/users/${username}/repos`, {
+                signal: controller.signal,
                 params: {
                     per_page: 100,
-                    page: page
+                    page: 1
                 }
+            })
+            .then(res => {
+                    console.log(res.data);
+                    setRepos(res.data);
+                    setLoading(false); // this line must be repeated because .finally() is not supported for some reason
+                }
+            )
+            .catch(err => {
+                if (err instanceof CanceledError) return;
+                setError(err.message);
+                setLoading(false);
             });
-            console.log(response);
-            //allRepos = allRepos.concat(response.data);
-            page++;
-        } while (page === 1);//response.data.length === 100);
-
-        // setRepos(allRepos);
-        setLoading(false);
-        // console.log(repos);
     }, []);
 
     return (
-        <Heading>Rendering</Heading>
+        <>
+            <Stack>
+                {repos.map(repo => <Heading>{repo.name}</Heading>)}
+
+            </Stack>
+        </>
     );
 };
 
