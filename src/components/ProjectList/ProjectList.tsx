@@ -1,4 +1,4 @@
-import {Heading, Spinner, Stack, Text} from "@chakra-ui/react";
+import {SimpleGrid, Spinner, Text} from "@chakra-ui/react";
 import useProjects from "../../hooks/useProjects.ts";
 import ProjectCard from "../ProjectCard";
 
@@ -11,9 +11,18 @@ const ProjectList = () => {
     return (
         <>
             {isLoading && <Spinner/>}
-            <Stack>
+            <SimpleGrid
+                columns={{
+                    sm: 1,
+                    md: 2,
+                    lg: 3,
+                    xl: 4
+                }}
+                padding="10px"
+                spacing={6}
+            >
                 {projects.map(project => <ProjectCard key={project.id} project={project}/>)}
-            </Stack>
+            </SimpleGrid>
         </>
     );
 };
