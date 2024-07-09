@@ -12,6 +12,7 @@ const LinkBar = () => {
             <HStack>
                 {linkMap.map((link) => (
                     <a
+                        key={link.label}
                         href={link.link}
                         target="_blank"
                     >
