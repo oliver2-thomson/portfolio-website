@@ -1,13 +1,13 @@
 import {Heading, Stack} from "@chakra-ui/react";
+import ProjectList from "../ProjectList";
 
 const Projects = () => {
-    const longArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     return (
         <>
             <Stack align="center">
                 <Heading>Projects</Heading>
-                {longArray.map(() => <Heading>Content to fill page</Heading>)}
+                <ProjectList/>
             </Stack>
         </>
     );
