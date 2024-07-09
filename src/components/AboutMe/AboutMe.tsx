@@ -1,5 +1,5 @@
 import {Heading, Image, Stack} from "@chakra-ui/react";
-import headshot from '../../assets/about-me-anonymous.svg';
+import headshot from '../../assets/about-me-main.svg';
 import LinkBar from "../LinkBar";
 
 const AboutMe = () => {
