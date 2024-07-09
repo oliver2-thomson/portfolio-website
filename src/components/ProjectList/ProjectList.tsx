@@ -6,11 +6,7 @@ import {CanceledError} from "axios";
 
 interface Project {
     name: string;
-}
-
-interface FetchResponse<Project> {
-    count: number;
-    data: Project[];
+    id: number;
 }
 
 const ProjectList = () => {
@@ -23,7 +19,7 @@ const ProjectList = () => {
 
         apiClient
             //get the first 100 repos from the user - I am assuming there will never be >100 repos but for the sake of generality I should come back and make this iterable
-            .get<FetchResponse<Project>>(`https://api.github.com/users/${username}/repos`, {
+            .get(`https://api.github.com/users/${username}/repos`, {
                 signal: controller.signal,
                 params: {
                     per_page: 100,
@@ -46,7 +42,7 @@ const ProjectList = () => {
     return (
         <>
             <Stack>
-                {repos.map(repo => <Heading>{repo.name}</Heading>)}
+                {repos.map(repo => <Heading key={repo.id}>{repo.name}</Heading>)}
 
             </Stack>
         </>
