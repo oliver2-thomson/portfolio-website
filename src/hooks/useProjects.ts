@@ -6,6 +6,7 @@ export interface Project {
     topics: string[];
 }
 
+// this hook filters from the results of the useRepos hook and only displays to the user the hooks that meet the criteria
 const useProjects = () => {
     const {projects, isLoading, error} = useRepos();
     //filter for repos with the required tag here

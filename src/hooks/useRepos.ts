@@ -1,11 +1,10 @@
-//this hook will return every repo from the GitHub API
 import {useEffect, useState} from "react";
 import apiClient from "../services/api-client.ts";
 import username from "../data/username.ts";
 import {CanceledError} from "axios";
 import {Project} from "./useProjects.ts";
 
-
+//this hook will return every repo from the GitHub API
 const useRepos = () => {
     const [projects, setProjects] = useState<Project[]>([]);
     const [isLoading, setIsLoading] = useState(true);
