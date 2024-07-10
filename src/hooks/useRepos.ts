@@ -23,7 +23,7 @@ const useRepos = () => {
                 }
             })
             .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     setProjects(res.data);
                     setIsLoading(false); // this line must be repeated because .finally() is not supported for some reason
                 }
