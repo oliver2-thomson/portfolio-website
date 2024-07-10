@@ -1,12 +1,16 @@
 import {Project} from "../../hooks/useProjects.ts";
 import {Card, CardBody, CardFooter, CardHeader, Heading, IconButton, Text} from "@chakra-ui/react";
 import {FaGithub} from "react-icons/fa";
+import useContents from "../../hooks/useContents.ts";
 
 interface Props {
     project: Project;
 }
 
 const ProjectCard = ({project}: Props) => {
+    const {content} = useContents(project.contents_url, '');
+    console.log(content);
+
     return (
         <>
             <Card>
