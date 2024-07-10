@@ -6,6 +6,7 @@ export interface Project {
     topics: string[];
     description: string | null;
     html_url: string;
+    contents_url: string;
 }
 
 // this hook filters from the results of the useRepos hook and only displays to the user the hooks that meet the criteria
