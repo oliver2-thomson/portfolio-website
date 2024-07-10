@@ -8,7 +8,8 @@ interface Props {
 }
 
 const ProjectCard = ({project}: Props) => {
-    const {content} = useContents(project.contents_url, '');
+    //get the details of the README file
+    const {content} = useContents(project.contents_url, 'README.md');
     console.log(content);
 
     return (
