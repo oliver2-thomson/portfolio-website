@@ -15,7 +15,7 @@ const useRepos = () => {
 
         apiClient
             //get the first 100 repos from the user - I am assuming there will never be >100 repos but for the sake of generality I should come back and make this iterable
-            .get(`https://api.github.com/users/${username}/repos`, {
+            .get(`/users/${username}/repos`, {
                 signal: controller.signal,
                 params: {
                     per_page: 100,
@@ -23,7 +23,7 @@ const useRepos = () => {
                 }
             })
             .then(res => {
-                    // console.log(res.data);
+                    console.log(res.data);
                     setProjects(res.data);
                     setIsLoading(false); // this line must be repeated because .finally() is not supported for some reason
                 }
