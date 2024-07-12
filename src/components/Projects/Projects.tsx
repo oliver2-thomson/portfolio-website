@@ -1,5 +1,6 @@
 import {Heading, Stack} from "@chakra-ui/react";
 import ProjectList from "../ProjectList";
+import ProjectViewer from "../ProjectViewer";
 
 const Projects = () => {
 
@@ -8,6 +9,7 @@ const Projects = () => {
             <Stack align="center">
                 <Heading>Projects</Heading>
                 <ProjectList/>
+                <ProjectViewer address={'https://oliver2-thomson.github.io/iframe-test/'}/>
             </Stack>
         </>
     );

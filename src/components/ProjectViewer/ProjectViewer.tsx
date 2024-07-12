@@ -1,14 +1,21 @@
-import {Project} from "../../hooks/useProjects.ts";
+import {useState} from "react";
 
 interface Props {
-    project: Project;
+    address: string;
 }
 
-const ProjectViewer = ({project}: Props) => {
-    
+const ProjectViewer = ({address}: Props) => {
+    const [buildUrl, setBuildUrl] = useState<string | null>(null);
+
+    const handleLoadProject = () => {
+        setBuildUrl(address);
+    };
 
     return (
-        <></>
+        <>
+            <button onClick={handleLoadProject}>Load Project</button>
+            {buildUrl && <iframe src={buildUrl} width="100%" height="500px"></iframe>}
+        </>
     );
 };
 
