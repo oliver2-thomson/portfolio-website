@@ -21,6 +21,8 @@ const ProjectCard = ({project}: Props) => {
                 </CardHeader>
                 <CardBody>
                     <Text>{project.description}</Text>
+                    {project.topics.includes('iframe-compatible') &&
+                        <ProjectViewer address={`https://oliver2-thomson.github.io/${project.name}/`}/>}
                 </CardBody>
                 <CardFooter>
                     <a
@@ -35,8 +37,6 @@ const ProjectCard = ({project}: Props) => {
                             size="lg"
                         />
                     </a>
-                    {project.topics.includes('iframe-compatible') &&
-                        <ProjectViewer address={`https://oliver2-thomson.github.io/${project.name}/`}/>}
                 </CardFooter>
             </Card>
         </>

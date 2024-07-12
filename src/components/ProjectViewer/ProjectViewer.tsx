@@ -16,8 +16,8 @@ const ProjectViewer = ({address}: Props) => {
         <>
             {!buildUrl && <button onClick={handleLoadProject}>Load Project</button>}
             {buildUrl &&
-                <Flex>
-                    <iframe src={buildUrl}></iframe>
+                <Flex width="100%" height="100%">
+                    <iframe src={buildUrl} width="100%" height="100%"></iframe>
                 </Flex>
             }
         </>
