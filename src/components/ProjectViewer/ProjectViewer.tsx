@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Flex} from "@chakra-ui/react";
 
 interface Props {
     address: string;
@@ -13,8 +14,12 @@ const ProjectViewer = ({address}: Props) => {
 
     return (
         <>
-            <button onClick={handleLoadProject}>Load Project</button>
-            {buildUrl && <iframe src={buildUrl} width="100%" height="500px"></iframe>}
+            {!buildUrl && <button onClick={handleLoadProject}>Load Project</button>}
+            {buildUrl &&
+                <Flex>
+                    <iframe src={buildUrl}></iframe>
+                </Flex>
+            }
         </>
     );
 };

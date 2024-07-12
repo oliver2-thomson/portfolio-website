@@ -2,6 +2,7 @@ import {Project} from "../../hooks/useProjects.ts";
 import {Card, CardBody, CardFooter, CardHeader, Heading, IconButton, Text} from "@chakra-ui/react";
 import {FaGithub} from "react-icons/fa";
 import useContents from "../../hooks/useContents.ts";
+import ProjectViewer from "../ProjectViewer";
 
 interface Props {
     project: Project;
@@ -34,6 +35,8 @@ const ProjectCard = ({project}: Props) => {
                             size="lg"
                         />
                     </a>
+                    {project.topics.includes('iframe-compatible') &&
+                        <ProjectViewer address={`https://oliver2-thomson.github.io/${project.name}/`}/>}
                 </CardFooter>
             </Card>
         </>
